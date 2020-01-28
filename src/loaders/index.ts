@@ -7,7 +7,7 @@ export default async (app: Application) => {
   await expressLoader(app);
   console.log('Express Intialized correctly');
 
-  //Typeorm Start
+  // Typeorm Start
   console.log('Typeorm Start init');
   await typeOrmLoader();
   console.log('Typeorm Intialized correctly');
