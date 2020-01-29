@@ -8,13 +8,13 @@ export class Place {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'varchar', length: 25, nullable: true })
+    @Column({ type: 'varchar', length: 255, nullable: true })
     city!: string;
 
-    @Column({ type: 'int', nullable: true })
+    @Column({ type: 'varchar', length: 255, nullable: true })
     beginDate!: string;
 
-    @Column({ type: 'int', nullable: true })
+    @Column({ type: 'varchar', length: 255, nullable: true })
     endDate!: string;
 
     @OneToMany(type => Representation, representation => representation.place)

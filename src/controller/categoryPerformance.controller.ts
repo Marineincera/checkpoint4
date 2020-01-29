@@ -1,6 +1,6 @@
 import { Application } from 'express';
 import { commonController } from '../core/abstract.controller';
-import { CategoryPerformanceService } from '../services/categoryPerformance';
+import { CategoryPerformanceService } from '../services/categoryPerformance.service';
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller

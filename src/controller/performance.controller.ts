@@ -1,4 +1,4 @@
-import { Application } from 'express';
+import { Application, Request, Response } from 'express';
 import { commonController } from '../core/abstract.controller';
 import { PerformanceService } from '../services/performance.service';
 
@@ -12,9 +12,10 @@ import { PerformanceService } from '../services/performance.service';
 export const PerformanceController = (app: Application) => {
     const performanceService = new PerformanceService();
 
-    const performanceRouter = commonController(performanceService);
+    let performanceRouter = commonController(performanceService);
 
     // Ajoutez les nouvelles routes ici
 
+    performanceRouter = commonController(performanceService, performanceRouter);
     app.use('/performances', performanceRouter);
 };

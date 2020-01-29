@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, ManyToMany, OneToMany } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, ManyToMany, OneToMany, JoinTable } from 'typeorm';
 import { UserRole } from './userRole.entity';
 import { Performance } from './performance.entity';
 import { Message } from './message.entity';
@@ -15,10 +15,11 @@ export class User {
     @Column({ type: 'varchar', length: 150, nullable: false, default: '' })
     email!: string;
 
-    @ManyToOne(type => UserRole, userRole => userRole.user)
+    @ManyToOne(type => UserRole, userRole => userRole.users)
     userRole?: UserRole;
 
-    @ManyToMany(type => Performance, performance => performance.users)
+    @ManyToMany(type => Performance)
+    @JoinTable()
     performances?: Performance[];
 
     @OneToMany(type => Message, message => message.user)

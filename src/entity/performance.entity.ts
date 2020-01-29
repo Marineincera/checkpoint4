@@ -20,10 +20,7 @@ export class Performance {
     @ManyToOne(type => CategoryPerformance, categoryPerf => categoryPerf.performances)
     categoryPerformance?: CategoryPerformance;
 
-    @ManyToMany(type => User, user => user.performances)
-    users?: User[];
-
-    @OneToMany(type => Message, message => message.performances)
+    @OneToMany(type => Message, message => message.performance)
     messages?: Message[];
 
 }

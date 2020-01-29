@@ -7,15 +7,18 @@ export class Price {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'bool', default: true })
+    @Column({ type: 'int', nullable: true })
+    amount!: number;
+
+    @Column({ type: 'bool', default: false })
     week!: boolean;
 
-    @Column({ type: 'bool', default: true })
+    @Column({ type: 'bool', default: false })
     weekEnd!: boolean;
 
-    @Column({ type: 'bool', default: true })
+    @Column({ type: 'bool', default: false })
     specialEvent!: boolean;
 
     @ManyToOne(type => CategoryPrice, categoryPrice => categoryPrice.prices)
-    categoryPrice?: CategoryPrice;
+    categoryPrice!: CategoryPrice;
 }

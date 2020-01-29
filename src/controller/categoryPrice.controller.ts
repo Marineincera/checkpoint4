@@ -12,9 +12,10 @@ import { CategoryPriceService } from '../services/categoryPrice.service';
 export const CategoryPriceController = (app: Application) => {
     const categoryPriceService = new CategoryPriceService();
 
-    const categoryPriceRouter = commonController(categoryPriceService);
+    let categoryPriceRouter = commonController(categoryPriceService);
 
     // Ajoutez les nouvelles routes ici
 
+    categoryPriceRouter = commonController(categoryPriceService, categoryPriceRouter);
     app.use('/categoriesprices', categoryPriceRouter);
 };

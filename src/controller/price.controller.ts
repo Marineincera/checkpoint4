@@ -1,4 +1,4 @@
-import { Application } from 'express';
+import { Application, Request, Response } from 'express';
 import { commonController } from '../core/abstract.controller';
 import { PriceService } from '../services/price.service';
 
@@ -12,9 +12,10 @@ import { PriceService } from '../services/price.service';
 export const PriceController = (app: Application) => {
     const priceService = new PriceService();
 
-    const priceRouter = commonController(priceService);
+    let priceRouter = commonController(priceService);
 
     // Ajoutez les nouvelles routes ici
 
+    priceRouter = commonController(priceService, priceRouter);
     app.use('/prices', priceRouter);
 };

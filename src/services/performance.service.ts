@@ -15,4 +15,22 @@ export class PerformanceService extends AbstractService {
         super();
     }
 
+    relationEntities = ['categoryPerformance', 'messages'];
+
+    getAll() {
+        return this.repository.find({ relations: this.relationEntities });
+    }
+
+    getById(id: number) {
+        return this.repository.findOne(id, { relations: this.relationEntities, where: { id } });
+    }
+
+    add(element: any) {
+        return this.repository.save(element);
+    }
+
+    update(idElement: any, element: any) {
+        return this.repository.update(idElement, element);
+    }
+
 }

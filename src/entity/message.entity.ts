@@ -15,7 +15,7 @@ export class Message {
     object!: string;
 
     @ManyToOne(type => Performance, performance => performance.messages)
-    performances?: Performance;
+    performance?: Performance;
 
     @ManyToOne(type => User, user => user.messages)
     user?: User;
