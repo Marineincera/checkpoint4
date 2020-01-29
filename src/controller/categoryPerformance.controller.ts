@@ -1,6 +1,6 @@
 import { Application } from 'express';
-import { UserService } from '../services/user.service';
 import { commonController } from '../core/abstract.controller';
+import { CategoryPerformanceService } from '../services/categoryPerformance';
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller
@@ -9,13 +9,12 @@ import { commonController } from '../core/abstract.controller';
  *
  * @param app l'application express
  */
-export const UserController = (app: Application) => {
+export const CategoryPerformanceController = (app: Application) => {
+    const categoryPerformanceService = new CategoryPerformanceService();
 
-    const userService = new UserService();
-
-    const userRouter = commonController(userService);
+    const categoryPerformanceRouter = commonController(categoryPerformanceService);
 
     // Ajoutez les nouvelles routes ici
 
-    app.use('/users', userRouter);
+    app.use('/categoriesperformances', categoryPerformanceRouter);
 };

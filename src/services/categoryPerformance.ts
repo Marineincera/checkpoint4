@@ -1,4 +1,4 @@
-import { UserRepository } from '../repository/user.repository';
+import { CategoryPerformanceRepository } from '../repository/categoryPerformance.repository';
 import { getCustomRepository } from 'typeorm';
 import { AbstractService } from '../core/abstract.service';
 /**
@@ -6,9 +6,9 @@ import { AbstractService } from '../core/abstract.service';
  * C'est ici que l'ensemble de la logique consernant les psort doit apparaitre.
  * Attention ! Mettez le moins possible d'element dans le controlleur
  */
-export class UserService extends AbstractService {
+export class CategoryPerformanceService extends AbstractService {
 
-    protected repository = getCustomRepository(UserRepository);
+    protected repository = getCustomRepository(CategoryPerformanceRepository);
 
     constructor() {
         super();

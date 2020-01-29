@@ -1,6 +1,6 @@
 import { Application } from 'express';
-import { UserService } from '../services/user.service';
 import { commonController } from '../core/abstract.controller';
+import { PlaceService } from '../services/place.service';
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller
@@ -9,13 +9,12 @@ import { commonController } from '../core/abstract.controller';
  *
  * @param app l'application express
  */
-export const UserController = (app: Application) => {
+export const PlaceController = (app: Application) => {
+    const placeService = new PlaceService();
 
-    const userService = new UserService();
-
-    const userRouter = commonController(userService);
+    const placeRouter = commonController(placeService);
 
     // Ajoutez les nouvelles routes ici
 
-    app.use('/users', userRouter);
+    app.use('/places', placeRouter);
 };
