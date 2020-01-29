@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany, ManyToOne, ManyToMany } from 'typeorm';
 import { User } from './user.entity';
-import { CategoryPerformance } from './categoryPerf.entity';
+import { CategoryPerformance } from './categoryPerformance.entity';
 import { Message } from './message.entity';
 @Entity('performance')
 export class Performance {

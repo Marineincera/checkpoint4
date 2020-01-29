@@ -7,8 +7,8 @@ export class Representation {
     @PrimaryGeneratedColumn({ type: 'int' })
     id!: number;
 
-    @Column({ type: 'int', length: 25, nullable: false })
-    beginHour!: number;
+    @Column({ type: 'int', nullable: false })
+    beginHour?: number;
 
     @ManyToOne(type => Place, place => place.representations)
     place?: Place;

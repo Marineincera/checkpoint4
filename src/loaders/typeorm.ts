@@ -1,5 +1,13 @@
 import { createConnection } from 'typeorm';
 import { User } from '../entity/user.entity';
+import { CategoryPerformance } from '../entity/categoryPerformance.entity';
+import { CategoryPrice } from '../entity/categoryPrice.entity';
+import { Message } from '../entity/message.entity';
+import { Performance } from '../entity/performance.entity';
+import { Place } from '../entity/place.entity';
+import { Price } from '../entity/price.entity';
+import { Representation } from '../entity/representation.entity';
+import { UserRole } from '../entity/userRole.entity';
 
 export default async () => {
 
@@ -11,6 +19,14 @@ export default async () => {
         database: process.env.CHECKPOINT_DATABASE,
         entities: [
             User,
+            CategoryPerformance,
+            CategoryPrice,
+            Message,
+            Performance,
+            Place,
+            Price,
+            Representation,
+            UserRole,
         ],
         synchronize: true,
     });

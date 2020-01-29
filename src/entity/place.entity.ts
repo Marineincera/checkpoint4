@@ -11,10 +11,10 @@ export class Place {
     @Column({ type: 'varchar', length: 25, nullable: false })
     city!: string;
 
-    @Column({ type: 'int', length: 25, nullable: false })
+    @Column({ type: 'int', nullable: false })
     beginDate!: string;
 
-    @Column({ type: 'int', length: 25, nullable: true })
+    @Column({ type: 'int', nullable: true })
     endDate!: string;
 
     @OneToMany(type => Representation, representation => representation.place)
