@@ -13,14 +13,14 @@ export const UserController = (app: Application) => {
     const userRouter: Router = express.Router();
     const userService = new UserService();
 
-    userRouter.get('/', async (req: Request, res: Response) => {
-        res.send(await userService.getAll());
-    });
+    // userRouter.get('/', async (req: Request, res: Response) => {
+    //     res.send(await userService.getAll());
+    // });
 
-    userRouter.post('/', async (req: Request, res: Response) => {
-        const user = req.body;
-        res.send(await userService.insert(user));
-    })
+    // userRouter.post('/', async (req: Request, res: Response) => {
+    //     const user = req.body;
+    //     res.send(await userService.insert(user));
+    // });
 
     app.use('/user', userRouter);
 };
