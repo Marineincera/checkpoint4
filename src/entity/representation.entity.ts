@@ -4,10 +4,10 @@ import { Place } from './place.entity';
 @Entity('representation')
 export class Representation {
 
-    @PrimaryGeneratedColumn({ type: 'int' })
+    @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'int', nullable: false })
+    @Column({ type: 'int', nullable: true })
     beginHour?: number;
 
     @ManyToOne(type => Place, place => place.representations)

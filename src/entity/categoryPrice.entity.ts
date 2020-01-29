@@ -5,10 +5,10 @@ import { Price } from './price.entity';
 @Entity('categoryPrice')
 export class CategoryPrice {
 
-    @PrimaryGeneratedColumn({ type: 'int' })
+    @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'varchar', length: 25, nullable: false })
+    @Column({ type: 'varchar', length: 25, nullable: false, default: '' })
     name!: string;
 
     @OneToMany(type => Price, price => price.categoryPrice)

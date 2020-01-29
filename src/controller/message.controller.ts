@@ -1,6 +1,6 @@
 import { Application } from 'express';
-import { UserService } from '../services/user.service';
 import { commonController } from '../core/abstract.controller';
+import { MessageService } from '../services/message.service';
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller
@@ -9,13 +9,12 @@ import { commonController } from '../core/abstract.controller';
  *
  * @param app l'application express
  */
-export const UserController = (app: Application) => {
+export const MessageController = (app: Application) => {
+    const messageService = new MessageService();
 
-    const userService = new UserService();
-
-    const userRouter = commonController(userService);
+    const messageRouter = commonController(messageService);
 
     // Ajoutez les nouvelles routes ici
 
-    app.use('/users', userRouter);
+    app.use('/messages', messageRouter);
 };

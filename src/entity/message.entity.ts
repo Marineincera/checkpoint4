@@ -5,13 +5,13 @@ import { Performance } from './performance.entity';
 @Entity('message')
 export class Message {
 
-    @PrimaryGeneratedColumn({ type: 'int' })
+    @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'text', nullable: false })
+    @Column({ type: 'varchar', length: 255, nullable: false, default: '' })
     text!: string;
 
-    @Column({ type: 'varchar', length: 140, nullable: true })
+    @Column({ type: 'varchar', length: 140, nullable: false, default: '' })
     object!: string;
 
     @ManyToOne(type => Performance, performance => performance.messages)

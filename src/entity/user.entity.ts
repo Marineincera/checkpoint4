@@ -9,10 +9,10 @@ export class User {
     @PrimaryGeneratedColumn({ type: 'int' })
     id!: number;
 
-    @Column({ type: 'varchar', length: 25, nullable: false })
+    @Column({ type: 'varchar', length: 25, nullable: false, default: '' })
     pseudo!: string;
 
-    @Column({ type: 'varchar', length: 15, nullable: false })
+    @Column({ type: 'varchar', length: 150, nullable: false, default: '' })
     email!: string;
 
     @ManyToOne(type => UserRole, userRole => userRole.user)

@@ -4,16 +4,16 @@ import { CategoryPrice } from './categoryPrice.entity';
 @Entity('price')
 export class Price {
 
-    @PrimaryGeneratedColumn({ type: 'int' })
+    @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'bool', default: false })
+    @Column({ type: 'bool', default: true })
     week!: boolean;
 
-    @Column({ type: 'bool', default: false })
+    @Column({ type: 'bool', default: true })
     weekEnd!: boolean;
 
-    @Column({ type: 'bool', default: false })
+    @Column({ type: 'bool', default: true })
     specialEvent!: boolean;
 
     @ManyToOne(type => CategoryPrice, categoryPrice => categoryPrice.prices)
