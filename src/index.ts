@@ -14,6 +14,7 @@ import { MessageController } from './controller/message.controller';
 import { CategoryPriceController } from './controller/categoryPrice.controller';
 import { CategoryPerformanceController } from './controller/categoryPerformance.controller';
 import loaders from './loaders';
+import { AuthController } from './controller/auth.controller';
 async function startServer() {
   // Récupération de l'application initiale
   const app = express();
@@ -31,6 +32,7 @@ async function startServer() {
   MessageController(app);
   CategoryPriceController(app);
   CategoryPerformanceController(app);
+  AuthController(app);
 
   // Démarrage du serveur une fois que tout est correctement init
   app.listen(3000, () => console.log('Express server is running'));

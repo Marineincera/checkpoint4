@@ -15,6 +15,12 @@ export class User {
     @Column({ type: 'varchar', length: 150, nullable: false, default: '' })
     email!: string;
 
+    @Column({ type: 'varchar', length: 255, nullable: false, default: '' })
+    password!: string;
+
+    @Column({ type: 'bool', default: false })
+    activated?: boolean;
+
     @ManyToOne(type => UserRole, userRole => userRole.users)
     userRole?: UserRole;
 

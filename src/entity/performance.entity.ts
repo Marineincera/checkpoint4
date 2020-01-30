@@ -8,7 +8,7 @@ export class Performance {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'varchar', length: 25, nullable: false, default: '' })
+    @Column({ type: 'varchar', length: 255, nullable: false, default: '' })
     name!: string;
 
     @Column({ type: 'varchar', length: 255, nullable: true })

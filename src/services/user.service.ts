@@ -1,6 +1,7 @@
 import { UserRepository } from '../repository/user.repository';
 import { getCustomRepository } from 'typeorm';
 import { AbstractService } from '../core/abstract.service';
+import { User } from '../entity/user.entity';
 /**
  * Cette classe est un service
  * C'est ici que l'ensemble de la logique consernant les psort doit apparaitre.
@@ -30,5 +31,10 @@ export class UserService extends AbstractService {
 
     update(idElement: any, element: any) {
         return this.repository.update(idElement, element);
+    }
+
+    async activUserAccount(user: User) {
+        user.activated = true;
+        return await this.repository.update(user.id, user);
     }
 }
