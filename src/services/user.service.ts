@@ -37,4 +37,11 @@ export class UserService extends AbstractService {
         user.activated = true;
         return await this.repository.update(user.id, user);
     }
+
+    async getMe(id: number) {
+        return await this.repository.findOne(id, {
+            select: ['email', 'pseudo', 'userRole', 'activated', 'id'],
+            relations: this.relationEntities
+        });
+    }
 }

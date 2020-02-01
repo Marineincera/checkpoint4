@@ -8,7 +8,6 @@ import { Place } from '../entity/place.entity';
 import { Price } from '../entity/price.entity';
 import { Representation } from '../entity/representation.entity';
 import { UserRole } from '../entity/userRole.entity';
-import { AuthController } from '../controller/auth.controller';
 import { Token } from '../entity/token.entity';
 
 export default async () => {

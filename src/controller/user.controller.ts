@@ -1,6 +1,8 @@
-import { Application } from 'express';
+import { Application, Request, Response, Router } from 'express';
 import { UserService } from '../services/user.service';
 import { commonController } from '../core/abstract.controller';
+import { Token } from '../entity/token.entity';
+import jwt = require('express-jwt');
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller
@@ -13,9 +15,31 @@ export const UserController = (app: Application) => {
 
     const userService = new UserService();
 
-    const userRouter = commonController(userService);
-
     // Ajoutez les nouvelles routes ici
+    let userRouter = Router();
 
+    if (!process.env.CHECKPOINT_SECRET) {
+        throw new Error('Secret is not defined');
+    }
+    userRouter.use(jwt({ secret: process.env.CHECKPOINT_SECRET }));
+
+    const secret1 = process.env.CHECKPOINT_SECRET;
+
+    if (!secret1) {
+        throw new Error('Pas de secret SETUP');
+    }
+    userRouter.use(jwt({ secret: secret1 })); // secret = variable d'environnement
+
+    userRouter.get('/me', async (req: Request, res: Response) => {
+        const user = await userService.getMe((req as any).user.id);
+        console.log(user);
+
+        if (!user) {
+            res.status(400).send('Aucun utuilisateur trouvé pour ce token');
+        }
+        res.send(user);
+    });
+
+    userRouter = commonController(userService, userRouter);
     app.use('/users', userRouter);
 };

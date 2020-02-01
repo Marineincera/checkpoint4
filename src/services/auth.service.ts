@@ -124,7 +124,7 @@ export class AuthService {
     // Test verification user
     async verif(email: string, password: string) {
         const labelError = new Error('Invalide crendentials');
-        const user = await this.repository.findOne({ where: { email }, select: ['id', 'password', 'email', 'activated', 'pseudo'] }); // équivalent {where: {email:email}}
+        const user = await this.repository.findOne({ where: { email }, select: ['id', 'password', 'email', 'activated', 'pseudo', 'userRole'] }); // équivalent {where: {email:email}}
 
         if (!user) { // Si pas user
             throw labelError;
@@ -134,7 +134,7 @@ export class AuthService {
             throw labelError;
         }
 
-        const secret1 = process.env.WILD_JWT_SECRET;
+        const secret1 = process.env.CHECKPOINT_SECRET;
         if (!secret1) {
             throw new Error('Pas de secret SETUP');
         }
