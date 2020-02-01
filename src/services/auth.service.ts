@@ -32,12 +32,16 @@ export class AuthService {
         if (await this.getUserSensitives(user.email)) {
             throw new Error('ALREADY_EXIST');
         }
+        console.log(user);
+
         user.password = await hash(user.password); // from argon2
 
         const tokenString = randomBytes(12).toString('hex');
 
         user = this.repository.create(user); // Initialisation d'un objet user
+        console.log('user INITIALIZED');
         user = await this.repository.save(user); // sauvegarder le user
+
         await this.nodemailer(tokenString, user); // envoi de mail
 
         const token = new Token();
@@ -52,7 +56,7 @@ export class AuthService {
     async signIn(email: string, password: string) {
         const labelError = new Error('Invalide crendentials');
         // tslint:disable-next-line: max-line-length
-        const user = await this.repository.findOne({ where: { email }, select: ['id', 'email', 'pseudo', 'activated', 'password'] }); // équivalent {where: {email:email}}
+        const user = await this.repository.findOne({ where: { email }, select: ['id', 'email', 'pseudo', 'activated', 'password', 'userRole'] }); // équivalent {where: {email:email}}
         // Si il n'y a pas eu d'activation de compte, renvoi l'erreur NOT ACTIVE
         // Si il y a actived true => continue la méthode signin
         if (!user?.activated) {

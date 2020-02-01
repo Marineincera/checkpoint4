@@ -14,7 +14,7 @@ export class Token {
     @Column()
     expiration!: Date;
 
-    @OneToOne(type => User)
+    @OneToOne(type => User, { onDelete: 'CASCADE' })
     @JoinColumn()
     user!: User;
 

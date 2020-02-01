@@ -17,10 +17,10 @@ export class Performance {
     @Column({ type: 'varchar', length: 255, nullable: true })
     description!: string;
 
-    @ManyToOne(type => CategoryPerformance, categoryPerf => categoryPerf.performances)
+    @ManyToOne(type => CategoryPerformance, categoryPerf => categoryPerf.performances, { onDelete: 'CASCADE' })
     categoryPerformance?: CategoryPerformance;
 
-    @OneToMany(type => Message, message => message.performance)
+    @OneToMany(type => Message, message => message.performance, { onDelete: 'CASCADE' })
     messages?: Message[];
 
 }

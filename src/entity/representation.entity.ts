@@ -10,6 +10,6 @@ export class Representation {
     @Column({ type: 'int', nullable: true })
     beginHour?: number;
 
-    @ManyToOne(type => Place, place => place.representations)
+    @ManyToOne(type => Place, place => place.representations, { onDelete: 'CASCADE' })
     place?: Place;
 }

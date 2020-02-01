@@ -15,6 +15,8 @@ export const AuthController = (app: Application) => {
 
     AuthRouter.post('/signup', async (req: Request, res: Response) => {
         const user = req.body;
+        console.log(user);
+
         try {
             await authService.signup(user);
             res.sendStatus(204);

@@ -17,6 +17,6 @@ export class Place {
     @Column({ type: 'varchar', length: 255, nullable: true })
     end!: string;
 
-    @OneToMany(type => Representation, representation => representation.place)
+    @OneToMany(type => Representation, representation => representation.place, { onDelete: 'CASCADE' })
     representations?: Representation[];
 }

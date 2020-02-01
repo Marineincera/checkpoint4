@@ -19,6 +19,6 @@ export class Price {
     @Column({ type: 'bool', default: false })
     specialEvent!: boolean;
 
-    @ManyToOne(type => CategoryPrice, categoryPrice => categoryPrice.prices)
+    @ManyToOne(type => CategoryPrice, categoryPrice => categoryPrice.prices, { onDelete: 'CASCADE' })
     categoryPrice!: CategoryPrice;
 }

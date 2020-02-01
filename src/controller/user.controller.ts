@@ -31,8 +31,8 @@ export const UserController = (app: Application) => {
     userRouter.use(jwt({ secret: secret1 })); // secret = variable d'environnement
 
     userRouter.get('/me', async (req: Request, res: Response) => {
+
         const user = await userService.getMe((req as any).user.id);
-        console.log(user);
 
         if (!user) {
             res.status(400).send('Aucun utuilisateur trouvé pour ce token');

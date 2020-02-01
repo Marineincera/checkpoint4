@@ -21,14 +21,14 @@ export class User {
     @Column({ type: 'bool', default: false })
     activated?: boolean;
 
-    @ManyToOne(type => UserRole, userRole => userRole.users)
+    @ManyToOne(type => UserRole, userRole => userRole.users, { onDelete: 'CASCADE' })
     userRole?: UserRole;
 
-    @ManyToMany(type => Performance)
+    @ManyToMany(type => Performance, { onDelete: 'CASCADE' })
     @JoinTable()
     performances?: Performance[];
 
-    @OneToMany(type => Message, message => message.user)
+    @OneToMany(type => Message, message => message.user, { onDelete: 'CASCADE' })
     messages?: Message[];
 
 }

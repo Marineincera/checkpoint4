@@ -8,8 +8,8 @@ export class UserRole {
     id!: number;
 
     @Column({ type: 'varchar', length: 150, nullable: false, default: '' })
-    name!: string;
+    name?: string;
 
-    @OneToMany(type => User, user => user.userRole)
+    @OneToMany(type => User, user => user.userRole, { onDelete: 'CASCADE' })
     users?: User[];
 }

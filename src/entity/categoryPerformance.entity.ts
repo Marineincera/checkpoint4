@@ -11,6 +11,6 @@ export class CategoryPerformance {
     @Column({ type: 'varchar', length: 25, nullable: false, default: '' })
     name!: string;
 
-    @OneToMany(type => Performance, performance => performance.categoryPerformance)
+    @OneToMany(type => Performance, performance => performance.categoryPerformance, { onDelete: 'CASCADE' })
     performances?: Performance[];
 }
