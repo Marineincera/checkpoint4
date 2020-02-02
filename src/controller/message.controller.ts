@@ -12,9 +12,9 @@ import { MessageService } from '../services/message.service';
 export const MessageController = (app: Application) => {
     const messageService = new MessageService();
 
-    const messageRouter = commonController(messageService);
+    let messageRouter = commonController(messageService);
 
     // Ajoutez les nouvelles routes ici
-
+    messageRouter = commonController(messageService, messageRouter);
     app.use('/messages', messageRouter);
 };

@@ -14,6 +14,9 @@ export class Message {
     @Column({ type: 'varchar', length: 140, nullable: false, default: '' })
     object!: string;
 
+    @Column({ type: 'varchar', length: 140, nullable: false, default: '' })
+    mailAuthor!: string;
+
     @ManyToOne(type => Performance, performance => performance.messages, { onDelete: 'CASCADE' })
     performance?: Performance;
 
