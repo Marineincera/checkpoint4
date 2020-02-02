@@ -12,11 +12,11 @@ export class Place {
     city!: string;
 
     @Column({ type: 'varchar', length: 255, nullable: true })
-    beginDate!: string;
+    begin!: string;
 
     @Column({ type: 'varchar', length: 255, nullable: true })
-    endDate!: string;
+    end!: string;
 
-    @OneToMany(type => Representation, representation => representation.place)
+    @OneToMany(type => Representation, representation => representation.place, { onDelete: 'CASCADE' })
     representations?: Representation[];
 }

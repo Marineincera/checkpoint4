@@ -8,6 +8,7 @@ import { Place } from '../entity/place.entity';
 import { Price } from '../entity/price.entity';
 import { Representation } from '../entity/representation.entity';
 import { UserRole } from '../entity/userRole.entity';
+import { Token } from '../entity/token.entity';
 
 export default async () => {
 
@@ -27,6 +28,7 @@ export default async () => {
             Price,
             Representation,
             UserRole,
+            Token,
         ],
         synchronize: true,
     });

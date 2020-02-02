@@ -8,7 +8,7 @@ export class Performance {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column({ type: 'varchar', length: 25, nullable: false, default: '' })
+    @Column({ type: 'varchar', length: 255, nullable: false, default: '' })
     name!: string;
 
     @Column({ type: 'varchar', length: 255, nullable: true })
@@ -17,10 +17,10 @@ export class Performance {
     @Column({ type: 'varchar', length: 255, nullable: true })
     description!: string;
 
-    @ManyToOne(type => CategoryPerformance, categoryPerf => categoryPerf.performances)
+    @ManyToOne(type => CategoryPerformance, categoryPerf => categoryPerf.performances, { onDelete: 'CASCADE' })
     categoryPerformance?: CategoryPerformance;
 
-    @OneToMany(type => Message, message => message.performance)
+    @OneToMany(type => Message, message => message.performance, { onDelete: 'CASCADE' })
     messages?: Message[];
 
 }
